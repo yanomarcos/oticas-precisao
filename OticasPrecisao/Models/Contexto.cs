@@ -4,11 +4,11 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace OticasPrecisao.Data
+namespace OticasPrecisao.Models
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class Contexto : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public Contexto(DbContextOptions<Contexto> options)
             : base(options)
         {
         }

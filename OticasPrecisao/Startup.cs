@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using OticasPrecisao.Data;
+using OticasPrecisao.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -34,11 +34,30 @@ namespace OticasPrecisao
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDbContext<Contexto>(options => options.UseSqlServer(Configuration.GetConnectionString("Conexao")));
+
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<Contexto>(); //apenas para funcionamento do site
+                                                                                              
+            //services.AddIdentity<Usuario, NiveisAcesso>().AddDefaultUI().AddEntityFrameworkStores<Contexto>();
+            //configuração de níveis de acesso
+
+            services.ConfigureApplicationCookie(opcoes =>
+            {
+                opcoes.Cookie.HttpOnly = true;
+                opcoes.ExpireTimeSpan = TimeSpan.FromMinutes(50);
+                opcoes.LoginPath = "/Usuarios/Login";
+                opcoes.SlidingExpiration = true;
+            });
+
+            services.Configure<IdentityOptions>(opcoes =>
+            {
+                opcoes.Password.RequireDigit = false;
+                opcoes.Password.RequireLowercase = false;
+                opcoes.Password.RequireNonAlphanumeric = false;
+                opcoes.Password.RequireUppercase = false;
+                opcoes.Password.RequiredLength = 6;
+                opcoes.Password.RequiredUniqueChars = 1;
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -51,11 +70,11 @@ namespace OticasPrecisao
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
-            }
+            //else
+            //{
+            //    app.UseExceptionHandler("/Home/Error");
+            //    app.UseHsts();
+            //}
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
