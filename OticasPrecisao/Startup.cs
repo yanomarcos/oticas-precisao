@@ -36,10 +36,7 @@ namespace OticasPrecisao
 
             services.AddDbContext<Contexto>(options => options.UseSqlServer(Configuration.GetConnectionString("Conexao")));
 
-            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<Contexto>(); //apenas para funcionamento do site
-                                                                                              
-            //services.AddIdentity<Usuario, NiveisAcesso>().AddDefaultUI().AddEntityFrameworkStores<Contexto>();
-            //configuração de níveis de acesso
+            services.AddIdentity<Usuario, NiveisAcesso>().AddDefaultUI().AddEntityFrameworkStores<Contexto>();
 
             services.ConfigureApplicationCookie(opcoes =>
             {
@@ -70,11 +67,6 @@ namespace OticasPrecisao
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
-            //else
-            //{
-            //    app.UseExceptionHandler("/Home/Error");
-            //    app.UseHsts();
-            //}
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
