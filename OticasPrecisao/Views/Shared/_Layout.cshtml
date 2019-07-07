@@ -6,12 +6,15 @@
     <title>@ViewData["Title"] - Óticas Precisão</title>
 
     <environment include="Development">
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.css" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
+        <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
@@ -19,38 +22,48 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light corOtica">
+    <nav class="navbar navbar-expand-lg navbar-light corOtica fixed-top">
         <div class="container">
-            <a class="navbar-brand text-white" asp-controller="Usuarios" asp-action="Index">@*<i class="fas fa-car fa-lg"></i>*@ Óticas Precisão</a>
+            <a class="navbar-brand text-white" asp-controller="Home" asp-action="Index">@*<i class="fas fa-car fa-lg"></i>*@ Óticas Precisão</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="white navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link navbar-text text-white" asp-action="Registro" asp-controller="Usuarios">Registro</a>
+                    <li class="nav-item">
+                        <a class="nav-link navbar-text text-white" asp-action="About" asp-controller="Home">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-text text-white" asp-action="Login" asp-controller="Usuarios">Login</a>
+                        <a class="nav-link navbar-text text-white" asp-action="Contact" asp-controller="Home">Contact</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link navbar-text text-white" asp-action="Index" asp-controller="Usuarios">Meus dados</a>
+                        <a class="nav-link navbar-text text-white" asp-action="Privacy" asp-controller="Home">Privacy</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link navbar-text text-white" asp-action="Index" asp-controller="Carros">Carros</a>
-                    </li>
+                    @*<li class="nav-item active">
+            <a class="nav-link navbar-text text-white" asp-action="Registro" asp-controller="Usuarios">Registro</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link navbar-text text-white" asp-action="Login" asp-controller="Usuarios">Login</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link navbar-text text-white" asp-action="Index" asp-controller="Usuarios">Meus dados</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link navbar-text text-white" asp-action="Index" asp-controller="Carros">Carros</a>
+        </li>
 
 
-                    <li class="nav-item">
-                        <a class="nav-link navbar-text text-white" asp-action="Index" asp-controller="NiveisAcessos">Niveis de acesso</a>
-                    </li>
+        <li class="nav-item">
+            <a class="nav-link navbar-text text-white" asp-action="Index" asp-controller="NiveisAcessos">Niveis de acesso</a>
+        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link navbar-text text-white" asp-action="Index" asp-controller="Contas">Saldo</a>
-                    </li>
+        <li class="nav-item">
+            <a class="nav-link navbar-text text-white" asp-action="Index" asp-controller="Contas">Saldo</a>
+        </li>*@
 
                 </ul>
 
